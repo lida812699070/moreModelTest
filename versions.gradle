@@ -1,0 +1,62 @@
+/**
+ * Shared file between builds so that they can all use the same dependencies and
+ * maven repositories.
+ **/
+ext.deps = [:]
+
+def versions = [:]
+//versions.android_gradle_plugin = "3.0.1"
+//versions.kotlin = "1.1.51"
+//versions.support = "27.0.2"
+//versions.multidex = "1.0.2"
+//versions.constraint_layout = "1.0.2"
+//versions.dagger = "2.11"
+//versions.glide = "3.8.0"
+//versions.rxjava2 = "2.1.7"
+//versions.rx_android = "2.0.1"
+//versions.retrofit = "2.3.0"
+//versions.event_bus = "3.1.1"
+//versions.photo_view = "2.0.0"
+//versions.persistent_cookie = "v1.0.1"
+//versions.gson = "2.8.2"
+//versions.qmui = "1.0.4"
+//versions.flow_layout = "1.0.3"
+//versions.swipe_recycler = "1.1.3"
+//versions.easy_recycler = "4.4.2"
+//versions.permission = "1.1.2"
+//versions.utils = "1.10.0"
+//versions.top_snackbar = "1.1.1"
+//versions.litepal = "1.6.1"
+//versions.toasty = "1.1.3"
+//versions.logger = "1.15"
+//versions.material_dialog = "0.9.6.0"
+//Arouter
+versions.arouter_compiler = "1.1.4"
+versions.arouter_api = "1.3.1"
+
+
+
+def deps = [:]
+
+deps.arouter_api = "com.alibaba:arouter-api:$versions.arouter_api"
+deps.arouter_compiler = "com.alibaba:arouter-compiler:$versions.arouter_compiler"
+
+ext.deps = deps
+
+def build_versions = [:]
+build_versions.min_sdk = 16
+build_versions.target_sdk = 27
+build_versions.build_tools = "27.0.2"
+ext.build_versions = build_versions
+
+
+def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+    handler.mavenCentral()
+    //Add the JitPack repository
+    handler.maven { url "https://jitpack.io" }
+    handler.maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+}
+
+ext.addRepos = this.&addRepos
