@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.careagle.commlib.my_route.MyRouteController;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -16,7 +17,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         findViewById(R.id.tv).setOnClickListener(this);
         Log.e("tag", "MainActivity");
-
+        MyRouteController.initMyRoute(getApplicationContext());
+        MyRouteController.startServiceByMyRoute(this, "MyServicePath");
     }
 
     @Override
